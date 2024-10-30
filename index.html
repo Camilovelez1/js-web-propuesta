@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia?</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Corazones animados en el fondo -->
+    <div class="heart" style="width: 20px; height: 20px; left: 10%; animation-duration: 8s; animation-delay: 0s;"></div>
+    <div class="heart" style="width: 30px; height: 30px; left: 25%; animation-duration: 10s; animation-delay: 1.5s;"></div>
+    <div class="heart" style="width: 25px; height: 25px; left: 40%; animation-duration: 9s; animation-delay: 0.5s;"></div>
+    <div class="heart" style="width: 15px; height: 15px; left: 55%; animation-duration: 11s; animation-delay: 2s;"></div>
+    <div class="heart" style="width: 35px; height: 35px; left: 70%; animation-duration: 8.5s; animation-delay: 1.2s;"></div>
+    <div class="heart" style="width: 20px; height: 20px; left: 85%; animation-duration: 10s; animation-delay: 0.7s;"></div>
+
+    <div class="container">
+        <h1>¿Quieres ser mi novia?</h1>
+        <div class="buttons">
+            <button id="boton-si" onclick="mostrarMensaje()">Sí</button>
+            <button id="boton-no">No</button>
+        </div>
+        <p id="mensaje"></p>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById("mensaje").innerText = "¡Sabía que dirías que sí! ❤️";
+        }
+
+        function moverBotonNo() {
+            const botonNo = document.getElementById("boton-no");
+
+            // Obtener el tamaño de la ventana y del botón
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const botonNoRect = botonNo.getBoundingClientRect();
+
+            // Calcular nuevas posiciones aleatorias dentro de la ventana
+            const newX = Math.floor(Math.random() * (windowWidth - botonNoRect.width));
+            const newY = Math.floor(Math.random() * (windowHeight - botonNoRect.height));
+
+            // Mover el botón a las nuevas posiciones
+            botonNo.style.position = "absolute";
+            botonNo.style.left = `${newX}px`;
+            botonNo.style.top = `${newY}px`;
+        }
+
+        // Asigna el evento para mover el botón en dispositivos de escritorio y móviles
+        const botonNo = document.getElementById("boton-no");
+        botonNo.onmouseover = moverBotonNo;  // Para dispositivos de escritorio
+        botonNo.ontouchstart = moverBotonNo; // Para dispositivos móviles
+    </script>
+</body>
+</html>
