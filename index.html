@@ -21,8 +21,13 @@
         <div class="buttons">
             <button id="boton-si" onclick="mostrarMensaje()">Sí</button>
             <button id="boton-no">No</button>
-        </div>
         <p id="mensaje"></p>
+      </div>
+        <div class="mistery-container">
+          <button id="boton-misterioso" onmouseover="moverBotonMisterioso()" onclick="irASecreto()">
+              💖🔮 Portal Mágico del Destino ✨🚀
+          </button>
+      </div>
     </div>
 
     <script>
@@ -46,6 +51,30 @@
             botonNo.style.position = "absolute";
             botonNo.style.left = `${newX}px`;
             botonNo.style.top = `${newY}px`;
+        }
+
+        let contadorMisterioso = 0;
+        function moverBotonMisterioso() {
+            if (contadorMisterioso < 10) {
+                const botonMisterioso = document.getElementById("boton-misterioso");
+
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+                const botonMisteriosoRect = botonMisterioso.getBoundingClientRect();
+
+                const newX = Math.floor(Math.random() * (windowWidth - botonMisteriosoRect.width));
+                const newY = Math.floor(Math.random() * (windowHeight - botonMisteriosoRect.height));
+
+                botonMisterioso.style.position = "absolute";
+                botonMisterioso.style.left = `${newX}px`;
+                botonMisterioso.style.top = `${newY}px`;
+
+                contadorMisterioso++;
+            }
+        }
+
+        function irASecreto() {
+            window.location.href = 'secreto.html';
         }
 
         // Asigna el evento para mover el botón en dispositivos de escritorio y móviles
