@@ -1,4 +1,10 @@
-/* Restaurar el fondo animado */
+/* 🔹 Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Dancing Script", cursive;
   background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
@@ -6,13 +12,15 @@ body {
   animation: gradientBackground 10s ease infinite;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Asegura que los elementos se acomoden en columna */
+  justify-content: center; /* Asegura que el contenido empiece desde arriba */
   align-items: center;
   color: #333;
-  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 20px; /* Espacio extra para que no se vea cortado */
 }
 
-/* Animación para el fondo degradado */
+/* 🔹 Animación para el fondo degradado */
 @keyframes gradientBackground {
   0% {
     background-position: 0% 50%;
@@ -25,7 +33,7 @@ body {
   }
 }
 
-/* Asegurar que el contenedor tenga la misma estética */
+/* 🔹 Contenedor principal */
 .container {
   text-align: center;
   display: flex;
@@ -35,14 +43,12 @@ body {
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 2s ease;
   max-width: 800px;
   width: 90%;
-  animation: fadeIn 2s ease;
-  overflow-y: auto;
-  max-height: 90vh;
 }
 
-/* Animación de aparición del contenido */
+/* 🔹 Animación de aparición */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -54,86 +60,239 @@ body {
   }
 }
 
-/* DISEÑO DEL INPUT DE CONTRASEÑA */
-.input-container {
+/* 🔹 Estilos del título */
+h1 {
+  color: #ff5c8d;
+  font-size: 2.8em;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  animation: textPopUp 1.5s ease;
+}
+
+/* 🔹 Animación del texto */
+@keyframes textPopUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 🔹 Botones en index.html */
+.buttons {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 1.3em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: inherit;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#boton-si {
+  background-color: #4caf50;
+  color: white;
+}
+
+#boton-no {
+  background-color: #ff6347;
+  color: white;
   position: relative;
+}
+
+#boton-si:hover,
+#boton-no:hover {
+  transform: scale(1.15);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔹 Botón misterioso en secreto.html */
+#misterioso {
+  background: linear-gradient(45deg, #3f51b5, #9c27b0);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.4em;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+#misterioso:hover {
+  background: linear-gradient(45deg, #9c27b0, #3f51b5);
+  transform: scale(1.1);
+  box-shadow: 0px 8px 20px rgba(63, 81, 181, 0.4);
+}
+
+/* 🔹 Ajuste del botón "Acceder" */
+#acceder-btn {
+  background: linear-gradient(45deg, #ff5c8d, #ff8ba7);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.4em;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+#acceder-btn:hover {
+  background: linear-gradient(45deg, #ff8ba7, #ff5c8d);
+  transform: scale(1.1);
+  box-shadow: 0px 8px 20px rgba(255, 92, 141, 0.4);
+}
+
+/* 🔹 Estilos mejorados para videos en secreto.html */
+/* 🔹 Centrar videos dentro de su contenedor */
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* Ajusta según el ancho deseado */
+  margin: 20px auto; /* Centra horizontalmente */
+}
+
+.video-container iframe {
+  width: 100%;
+  max-width: 560px; /* Evita que se estiren demasiado */
+  height: auto;
+  aspect-ratio: 16 / 9; /* Mantiene la proporción correcta */
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 Estilos específicos para videos verticales */
+.vertical-video iframe {
+  max-width: 360px; /* Ajusta el ancho máximo para videos verticales */
+  width: 100%;
+  aspect-ratio: 9 / 16; /* Mantiene la proporción vertical */
+}
+
+/* 🔹 Scroll automático mejorado */
+html,
+body {
+  height: 100%;
+  overflow-y: auto; /* Permite desplazamiento sin cortar contenido */
+  scroll-behavior: smooth;
+}
+
+/* Asegurar que el contenido desbloqueado ocupe toda la pantalla */
+#content {
+  width: 100%;
+  max-width: 800px;
+  text-align: left;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+}
+
+/* Ajustar la estructura para evitar recorte */
+.secret-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding-top: 40px;
+}
+
+/* Asegurar que el título y la historia mantengan margen */
+/* 🔹 Estilos generales de la historia */
+.story {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+}
+
+/* 🔹 Título principal de la historia */
+.story-title {
+  font-size: 2em;
+  color: #ff5c8d;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 🔹 Subtítulos */
+.story-subtitle {
+  font-size: 1.6em;
+  color: #d32f2f;
+  margin-top: 20px;
+}
+
+/* 🔹 Párrafos */
+.story-text {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* 🔹 Listas */
+.story-list {
+  padding-left: 25px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* 🔹 Última frase */
+.story-ending {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.3em;
+  margin-top: 20px;
+}
+
+/* 🔹 Diseño mejorado para la casilla de contraseña */
+.input-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-  width: 320px; /* Ancho más grande para mejor visibilidad */
-}
-
-/* Estilizar el campo de entrada */
-#clave {
-  width: 100%; /* Ocupar todo el espacio disponible */
-  padding: 12px 50px; /* Más espacio a la derecha para el botón */
-  font-size: 1.2em;
+  background: white;
+  border-radius: 30px;
+  padding: 10px;
   border: 2px solid #ff5c8d;
-  border-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 280px;
+}
+
+.input-container input {
+  border: none;
   outline: none;
-  transition: all 0.3s ease;
-  font-family: "Dancing Script", cursive;
+  padding: 10px;
+  font-size: 1.2em;
+  border-radius: 30px;
+  width: 200px;
   text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(255, 92, 141, 0.2);
-  -webkit-text-security: disc; /* Hace que la clave se vea como • en Safari */
+  font-family: "Dancing Script", cursive;
 }
 
-/* Cambiar el borde y la sombra al enfocar */
-#clave:focus {
-  border-color: #ff4081;
-  box-shadow: 0 6px 15px rgba(255, 64, 129, 0.4);
-}
-
-/* Ícono de llave 🔑 en el input */
+/* 🔑 Icono de llave en la casilla */
 .input-container::before {
   content: "🔑";
-  position: absolute;
-  left: 15px;
   font-size: 1.4em;
-  color: #ff5c8d;
+  margin-right: 10px;
 }
 
-/* Botón para mostrar/ocultar contraseña */
-.toggle-password {
-  position: absolute;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 1.5em; /* Tamaño más grande para mejor visibilidad */
-  cursor: pointer;
-  color: #ff5c8d;
-  transition: transform 0.2s;
-}
-
-.toggle-password:hover {
-  transform: scale(1.2);
-}
-
-/* BOTÓN DE ACCESO */
-button {
-  background: linear-gradient(45deg, #ff5c8d, #ff4081);
-  color: white;
-  padding: 12px 20px;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  font-family: "Dancing Script", cursive;
-  box-shadow: 0px 5px 15px rgba(255, 92, 141, 0.4);
-}
-
-/* Efecto hover en el botón */
-button:hover {
-  transform: scale(1.1);
-  background: linear-gradient(45deg, #ff4081, #ff5c8d);
-  box-shadow: 0px 8px 20px rgba(255, 92, 141, 0.6);
-}
-
-/* Diseño mejorado para las rosas flotantes */
+/* 🔹 Animaciones de corazones y rosas */
+.heart,
 .rose {
   position: absolute;
   font-size: 24px;
@@ -141,7 +300,6 @@ button:hover {
   opacity: 0.9;
 }
 
-/* Diferentes tamaños de rosas */
 .rose.small {
   font-size: 18px;
 }
@@ -152,7 +310,6 @@ button:hover {
   font-size: 32px;
 }
 
-/* Animación de rosas flotantes */
 @keyframes floating-roses {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -164,54 +321,141 @@ button:hover {
   }
 }
 
-/* Historia de amor con mejor estructura */
-.story {
-  text-align: left;
-  max-width: 700px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+/* 🔹 Estilos para el confeti */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ffeb3b;
+  opacity: 0.8;
+  animation: confettiFall 2s linear forwards;
+  border-radius: 50%;
 }
 
-.story h2,
-.story h3 {
-  color: #ff5c8d;
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
-.story p {
-  font-size: 1.1em;
-  line-height: 1.6;
+/* 🔹 Animación de corazones en el fondo */
+.heart {
+  position: absolute;
+  background-color: #ff5c8d;
+  transform: rotate(45deg);
+  animation: floating-hearts 7s infinite;
+  border-radius: 5px;
+  opacity: 0.8;
+  width: 20px;
+  height: 20px;
 }
 
-/* Asegurar que el contenido sea scrollable si es necesario */
-#content {
-  max-width: 800px;
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
   width: 100%;
-  text-align: center;
-  overflow-y: auto;
-  max-height: 80vh;
+  height: 100%;
+  background-color: #ff5c8d;
+  border-radius: 50%;
 }
 
-/* Contenedor del video para mejor visualización */
-.video-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 400px; /* Ajuste para videos verticales */
-  height: auto;
-  margin: 20px auto;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+.heart::before {
+  top: -50%;
+  left: 0;
 }
 
-/* Ajuste del video vertical */
-.video-container video {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 15px;
+.heart::after {
+  left: 50%;
+  top: 0;
+}
+
+/* 🔹 Animación de flotación de corazones */
+@keyframes floating-hearts {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 🔹 Confeti */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ffeb3b;
+  opacity: 0.8;
+  animation: confettiFall 2s linear forwards;
+  border-radius: 50%;
+}
+
+/* 🔹 Animación de caída del confeti */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 🔹 Botón misterioso con colores animados */
+#boton-misterioso {
+  background: linear-gradient(45deg, #3f51b5, #9c27b0, #4a148c, #1a237e);
+  background-size: 300% 300%;
+  color: white;
+  padding: 14px 35px;
+  border-radius: 30px;
+  font-size: 1.4em;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  animation: botonBrillante 2s infinite linear,
+    cambioColores 4s infinite alternate;
+  box-shadow: 0px 8px 20px rgba(63, 81, 181, 0.5);
+}
+
+/* 🔹 Animación de cambio de colores */
+@keyframes cambioColores {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 🔹 Efecto de brillo */
+@keyframes botonBrillante {
+  0% {
+    box-shadow: 0px 0px 10px rgba(156, 39, 176, 0.4);
+  }
+  50% {
+    box-shadow: 0px 0px 20px rgba(156, 39, 176, 0.7);
+  }
+  100% {
+    box-shadow: 0px 0px 10px rgba(156, 39, 176, 0.4);
+  }
+}
+
+/* 🔹 Efecto hover para hacerlo aún más interactivo */
+#boton-misterioso:hover {
+  background: linear-gradient(45deg, #1a237e, #4a148c, #9c27b0, #3f51b5);
+  transform: scale(1.1);
+  box-shadow: 0px 10px 30px rgba(63, 81, 181, 0.6);
 }
