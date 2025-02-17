@@ -1,0 +1,8 @@
+Para correr localmente
+
+- npx serve
+
+Para desplegar a producci[on
+
+- git push origin master
+- vercel --prod
