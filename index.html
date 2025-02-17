@@ -24,7 +24,7 @@
         <p id="mensaje"></p>
       </div>
         <div class="mistery-container">
-          <button id="boton-misterioso" ontouchstart="moverBotonMisterioso()" onmouseover="moverBotonMisterioso()"  onclick="irASecreto()">
+          <button id="boton-misterioso" onclick="irASecreto()">
               💖🔮 Portal Mágico del Destino ✨🚀
           </button>
       </div>
@@ -54,9 +54,13 @@
         }
 
         let contadorMisterioso = 0;
-        function moverBotonMisterioso() {
+
+        function moverBotonMisterioso(event) {
             if (contadorMisterioso < 10) {
                 const botonMisterioso = document.getElementById("boton-misterioso");
+
+                // Evitar el clic si aún no se han hecho 10 interacciones
+                event.preventDefault();
 
                 const windowWidth = window.innerWidth;
                 const windowHeight = window.innerHeight;
@@ -73,14 +77,28 @@
             }
         }
 
+        // Agregar eventos para mover el botón en PC y móviles
+        const botonMisterioso = document.getElementById("boton-misterioso");
+
+        botonMisterioso.addEventListener("mouseover", moverBotonMisterioso);  // PC
+        botonMisterioso.addEventListener("touchstart", moverBotonMisterioso); // Móvil
+        
         function irASecreto() {
+        if (contadorMisterioso >= 10) {
             window.location.href = 'secreto.html';
         }
+    }
 
-        // Asigna el evento para mover el botón en dispositivos de escritorio y móviles
-        const botonNo = document.getElementById("boton-no");
-        botonNo.onmouseover = moverBotonNo;  // Para dispositivos de escritorio
-        botonNo.ontouchstart = moverBotonNo; // Para dispositivos móviles
+        // ✅ Esperar a que el DOM cargue antes de agregar eventos
+        window.onload = function() {
+            const botonMisterioso = document.getElementById("boton-misterioso");
+            botonMisterioso.addEventListener("mouseover", moverBotonMisterioso);  // PC
+            botonMisterioso.addEventListener("touchstart", moverBotonMisterioso); // Móvil
+
+            const botonNo = document.getElementById("boton-no");
+            botonNo.onmouseover = moverBotonNo;  // PC
+            botonNo.ontouchstart = moverBotonNo; // Móvil
+        };
     </script>
 </body>
 </html>
